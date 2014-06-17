@@ -7,11 +7,11 @@ class Alife {
 		int width = 800;
 		int height = 800;
 		
-		Frame frame = new Frame("H•¨˜A½‚ğ‘z’è‚µ‚½lH¶–½",width+20,height+50);
+		Frame frame = new Frame("ï¿½Hï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½zï¿½è‚µï¿½ï¿½ï¿½lï¿½Hï¿½ï¿½ï¿½ï¿½",width+20,height+50);
 		frame.setVisible(true);
 		
 		World world = new World(width,height);
 		frame.add(world);
 	}
-
+//s
 }
