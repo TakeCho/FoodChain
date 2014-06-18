@@ -10,14 +10,22 @@ public class FrameAndField extends JPanel{
 	
 	int field_W;
 	int field_H;
+	int field_T;
+	Map map;
 	
-	
-	FrameAndField(int width, int height){
+	FrameAndField(int width, int height, int tile,Map map){
 		
 		field_W = width;
 		field_H = height;
+		field_T = tile;
+		this.map = map;
 		
 	}
+	
+	void setMap(Map m){
+		map = m;
+	}
+	
 	
 	@Override
 	public void paintComponent(Graphics g){
@@ -25,6 +33,11 @@ public class FrameAndField extends JPanel{
 		g.fillRect(0, 0, field_W, field_H);
 		g.setColor(Color.BLACK);
 		g.drawRect(0, 0, field_W, field_H);
+		
+		for(int i=1;i<=field_T;i++){    //分割タイルの生成
+		g.drawLine(i*field_W/field_T, 0, i*field_W/field_T, field_H);
+		g.drawLine(0 ,i*field_H/field_T, field_W, i*field_H/field_T);
+		}
 }
 	
 	

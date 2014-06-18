@@ -6,11 +6,13 @@ class Alife {
 		
 		int width = 800;
 		int height = 800;
+		int tile = 50;
+		Map map = new Map();
 		
 		Frame frame = new Frame("食物連鎖を想定した人工生命",width+20,height+50);
 		frame.setVisible(true);
 		
-		FrameAndField faf = new FrameAndField(width,height);
+		FrameAndField faf = new FrameAndField(width,height,tile,map);
 		frame.add(faf);
 		
 		
@@ -33,6 +35,9 @@ class Alife {
 			}catch(Exception e){
 				System.out.println(e);
 			}
+			
+			faf.setMap(map);
+			faf.repaint();
 			
 			
 			
