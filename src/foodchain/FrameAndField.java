@@ -12,6 +12,10 @@ public class FrameAndField extends JPanel{
 	int field_H;
 	int field_T;
 	Map map;
+	Wall wall;
+	int ratio_w;
+	int ratio_h;
+
 	
 	FrameAndField(int width, int height, int tile,Map map){
 		
@@ -19,6 +23,10 @@ public class FrameAndField extends JPanel{
 		field_H = height;
 		field_T = tile;
 		this.map = map;
+		wall = new Wall(width,height,tile);
+		ratio_w = field_W / field_T;
+		ratio_h = field_H / field_T;
+
 		
 	}
 	
@@ -34,9 +42,16 @@ public class FrameAndField extends JPanel{
 		g.setColor(Color.BLACK);
 		g.drawRect(0, 0, field_W, field_H);
 		
+		
 		for(int i=1;i<=field_T;i++){    //分割タイルの生成
-		g.drawLine(i*field_W/field_T, 0, i*field_W/field_T, field_H);
-		g.drawLine(0 ,i*field_H/field_T, field_W, i*field_H/field_T);
+		g.drawLine(i*ratio_w, 0, i*ratio_w, field_H);
+		g.drawLine(0 ,i*ratio_h, field_W, i*ratio_h);
+		}
+		
+		wall.paint(g);
+		
+		for(MapObject mo:map){
+			mo.paint(g);
 		}
 }
 	
@@ -46,13 +61,13 @@ public class FrameAndField extends JPanel{
 
 
 class Frame extends JFrame{
-	int frame_W = 800;
+	/*int frame_W = 800;
 	int frame_H = 800;
-	
+	*/
 	Frame(String title, int width, int height){
 		
 		setTitle(title);
-		setSize(frame_W,frame_H);
+		setSize(width,height);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 	}

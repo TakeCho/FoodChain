@@ -10,6 +10,8 @@ public class MapObject {
 	Point pos;
 	int radius;
 	Color color;
+	int tile;
+	int w,h;
 	
 	Map action(Map map){
 		Map m = new Map();
@@ -20,7 +22,7 @@ public class MapObject {
 	
 	void paint(Graphics g){
 		g.setColor(color);
-		g.fillOval(0, 0, 10, 10);
+		g.fillOval(pos.x-radius, pos.y-radius, radius*2, radius*2);
 	}
 
 }
